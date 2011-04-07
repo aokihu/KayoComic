@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="lib" path="lib/adlib_android.jar"/>
+	<classpathentry kind="lib" path="lib/adchina_android_sdk.jar"/>
+	<classpathentry kind="lib" path="lib/admob-sdk-android.jar"/>
+	<classpathentry kind="lib" path="lib/casee-ad-sdk-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/guohead-sdk.jar"/>
+	<classpathentry kind="lib" path="lib/MMAdView.jar"/>
+	<classpathentry kind="lib" path="lib/smartmad-sdk-android.jar"/>
+	<classpathentry kind="lib" path="lib/WiAd.jar"/>
+	<classpathentry kind="lib" path="lib/youmiad-android.jar"/>
+	<classpathentry kind="lib" path="lib/libGoogleAnalytics.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

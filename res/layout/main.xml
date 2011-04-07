@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:scrollbarStyle="insideOverlay" android:scrollbars="none" android:orientation="vertical" android:layout_width="match_parent">
+    <WebView android:layout_height="match_parent" android:id="@+id/mainWebView" android:layout_width="fill_parent" android:scrollbars="none" android:layout_weight="1" android:fitsSystemWindows="true" android:persistentDrawingCache="all"></WebView>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="48dp" android:id="@+id/adLayout"></LinearLayout>
+</LinearLayout>

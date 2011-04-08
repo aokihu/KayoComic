@@ -9,7 +9,11 @@ var __Global = {
     rootUrl:"http://www.kayonees.com/kayodm/data/"
 };
 
+var navigtor; // 导航器
+
 Ext.setup({
+    fullscreen:true,
+    phoneStartupScreen:"res/loginload.png",
     onReady:init
 });
 
@@ -62,6 +66,9 @@ function init(){
         
         // 设置标题
         navigtor.setTitle(name +" "+vol+"话");
+        
+        // 设置google分析
+        Android.trackPage(name);
 	})
 	
 	// 展示页
@@ -101,6 +108,11 @@ function init(){
     });	
 }
 
+
+
+/* 方法定义
+--------------------------------------------*/
+
 function makeDisplay(category, pageNumber){
 	
 	ret = "";
@@ -117,6 +129,7 @@ function makeDisplay(category, pageNumber){
 // 放大缩小
 function zoom(method)
 {
+    
     var imgs = document.querySelectorAll(".my-image");
     
     for(i = 0; i < imgs.length; i++)
@@ -134,4 +147,17 @@ function zoom(method)
         }
     }
     
+}
+
+// 处理程序回退功能
+function doBackPress(){
+    var _number = navigtor.getViewStackNumber();
+    
+    if(_number > 0)
+    {
+        navigtor.pop();
+    }else
+    {
+        Android.exitApp();
+    }
 }

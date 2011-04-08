@@ -7,15 +7,20 @@ import com.guohead.sdk.GuoheAdStateListener;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Window;
 import android.webkit.*;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
+import com.digitaltools.kayodm.JavascriptInterface;
 
 public class app extends Activity {
     /** Called when the activity is first created. */
 	
 	GoogleAnalyticsTracker tracker;
+	WebView web;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,11 @@ public class app extends Activity {
         
         tracker = GoogleAnalyticsTracker.getInstance();
         tracker.start("UA-22478651-1", 5, this);
+        tracker.setCustomVar(1, "android mode", android.os.Build.MODEL);
+        tracker.setCustomVar(1, "android product", android.os.Build.PRODUCT);
+        tracker.setCustomVar(1, "android device", android.os.Build.DEVICE);
+        tracker.setCustomVar(1, "android id", android.os.Build.ID);
+        tracker.setCustomVar(1, "android brand", android.os.Build.BRAND);
         tracker.trackPageView("Main page");
         
         // 去掉标题栏
@@ -31,9 +41,11 @@ public class app extends Activity {
         setContentView(R.layout.main);
         
         // 加载网页
-        WebView web = (WebView) this.findViewById(R.id.mainWebView);
+        web = (WebView) this.findViewById(R.id.mainWebView);
         web.getSettings().setJavaScriptEnabled(true);
+        web.addJavascriptInterface(new JavascriptInterface(this, tracker), "Android");	// 增加一个javascript interface到web view众,tracker是google分析对象
         web.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        web.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         web.loadUrl("file:///android_asset/www/index.html");
         
         // Guohead广告设置
@@ -75,6 +87,20 @@ public class app extends Activity {
     	super.onDestroy();
     	GuoheAdManager.finish(this);
     	tracker.stop();
+    }
+    
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    	// TODO Auto-generated method stub
+    	
+    	if(keyCode == KeyEvent.KEYCODE_BACK)
+    	{
+    		web.loadUrl("javascript:doBackPress()");
+    		
+    		return true;
+    	}
+    	else
+    		return super.onKeyDown(keyCode, event);
     }
     
 }

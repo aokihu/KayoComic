@@ -72,5 +72,9 @@ DTNavigtorComponent = Ext.extend(Ext.Panel,{
 	// 返回导航栏对象
 	getToolbar:function(){
 		return this.toolbar;
-	}
+	},
+    // 返回堆栈数量
+    getViewStackNumber:function(){
+        return this.viewStack.length;
+    }
 })

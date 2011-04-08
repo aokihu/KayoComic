@@ -44,8 +44,6 @@ public class app extends Activity {
         web = (WebView) this.findViewById(R.id.mainWebView);
         web.getSettings().setJavaScriptEnabled(true);
         web.addJavascriptInterface(new JavascriptInterface(this, tracker), "Android");	// 增加一个javascript interface到web view众,tracker是google分析对象
-        web.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        web.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         web.loadUrl("file:///android_asset/www/index.html");
         
         // Guohead广告设置

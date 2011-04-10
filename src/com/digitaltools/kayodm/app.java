@@ -28,10 +28,10 @@ public class app extends Activity {
         
         tracker = GoogleAnalyticsTracker.getInstance();
         tracker.start("UA-22478651-1", 5, this);
-        tracker.setCustomVar(1, "android mode", android.os.Build.MODEL);
-        tracker.setCustomVar(1, "android product", android.os.Build.PRODUCT);
-        tracker.setCustomVar(1, "android device", android.os.Build.DEVICE);
-        tracker.setCustomVar(1, "android id", android.os.Build.ID);
+        tracker.setCustomVar(5, "android mode", android.os.Build.MODEL);
+        tracker.setCustomVar(4, "android product", android.os.Build.PRODUCT);
+        tracker.setCustomVar(3, "android device", android.os.Build.DEVICE);
+        tracker.setCustomVar(2, "android id", android.os.Build.ID);
         tracker.setCustomVar(1, "android brand", android.os.Build.BRAND);
         tracker.trackPageView("Main page");
         
